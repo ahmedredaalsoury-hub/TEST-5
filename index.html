@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> BONO | طعم يستاهل الحكاية</title>
+
+<style>
+:root {
+  --red: #d71920;
+  --dark: #171310;
+  --cream: #fff8ed;
+  --yellow: #ffd34e;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+}
+a { text-decoration: none; }
+.topbar {
+  background: var(--yellow);
+  color: #24170c;
+  text-align: center;
+  padding: 9px 12px;
+  font-weight: bold;
+  font-size: 13px;
+}
+header {
+  background: #bb6f3c;
+  color: rgb(241, 238, 238);
+  padding: 17px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.logo {
+  color: var(--yellow);
+  font-size: 30px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+.logo span { color: white; }
+nav { display: flex; gap: 22px; flex-wrap: wrap; }
+nav a { color: white; font-size: 14px; }
+nav a:hover { color: var(--yellow); }
+.header-btn {
+  background: var(--red);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+.hero {
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  padding: 70px 8%;
+  color: white;
+  background:
+    linear-gradient(90deg, rgba(15,10,7,.35), rgba(15,10,7,.92)),
+    url("https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1800&q=90")
+    center/cover;
+}
+.hero-content { max-width: 650px; animation: rise .9s ease both; }
+.eyebrow {
+  display: inline-block;
+  background: var(--yellow);
+  color: #24170c;
+  padding: 9px 14px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.hero h1 {
+  font-size: clamp(43px, 7vw, 76px);
+  line-height: 1.2;
+  margin: 22px 0;
+  font-weight: 1000;
+}
+.hero h1 span { color: var(--yellow); }
+.hero p { color: #f2e9df; font-size: 18px; line-height: 2; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+.btn {
+  display: inline-block;
+  padding: 15px 24px;
+  border-radius: 9px;
+  font-weight: bold;
+  transition: .25s;
+}
+.btn:hover { transform: translateY(-4px); }
+.btn-yellow { background: var(--yellow); color: #20140a; }
+.btn-outline { border: 1px solid white; color: white; }
+.section { padding: 75px 7%; }
+.section-head { text-align: center; margin-bottom: 36px; }
+.kicker {
+  color: var(--red);
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.section-head h2 { font-size: clamp(30px, 4vw, 43px); margin: 12px 0; }
+.section-head p { color: #76685b; line-height: 1.8; }
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.feature {
+  background: white;
+  padding: 27px 20px;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid #f1e3d0;
+}
+.feature-icon { font-size: 35px; }
+.feature h3 { margin-bottom: 8px; }
+.feature p { color: #786b60; line-height: 1.8; font-size: 14px; }
+.menu-section { background: #f5ead9; }
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.filter {
+  border: 1px solid #ddcbb5;
+  background: white;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  color: #35251a;
+}
+.filter:hover { background: var(--yellow); }
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.food-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px #39210d0d;
+  transition: .3s;
+}
+.food-card:hover { transform: translateY(-7px); box-shadow: 0 15px 32px #39210d1a; }
+.food-card img { width: 100%; height: 220px; object-fit: cover; display: block; }
+.food-info { padding: 19px; }
+.food-info h3 { margin: 0 0 9px; font-size: 21px; }
+.food-info p { color: #77685a; font-size: 14px; line-height: 1.8; min-height: 45px; }
+.food-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.price { color: var(--red); font-weight: 900; font-size: 16px; }
+.small-btn { background: var(--red); color: white; padding: 10px 13px; border-radius: 8px; font-size: 13px; }
+.callout {
+  margin: 10px 7% 75px;
+  border-radius: 24px;
+  background: var(--red);
+  color: white;
+  padding: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+.callout h2 { font-size: 34px; margin: 0 0 10px; }
+.callout p { color: #ffe5dc; line-height: 1.8; margin: 0; }
+.contact { background: #1b1511; color: white; text-align: center; }
+.contact .section-head p { color: #d0c3b6; }
+.contact-box {
+  max-width: 750px;
+  margin: auto;
+  background: #2a211b;
+  padding: 28px;
+  border-radius: 18px;
+}
+.contact-line { padding: 13px; border-bottom: 1px solid #48382b; line-height: 1.8; }
+.contact-line:last-child { border: 0; }
+.contact a { color: var(--yellow); }
+footer { text-align: center; background: #100d0b; color: #b9aa9b; padding: 24px; font-size: 13px; }
+.reveal { animation: rise .7s ease both; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media(max-width: 850px) {
+  .menu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .features { grid-template-columns: 1fr; }
+  .hero { min-height: 500px; }
+}
+@media(max-width: 580px) {
+  header { justify-content: center; text-align: center; }
+  nav { justify-content: center; gap: 14px; }
+  .header-btn { display: none; }
+  .hero { padding: 55px 6%; min-height: 500px; }
+  .hero h1 { font-size: 43px; }
+  .hero p { font-size: 16px; }
+  .section { padding: 48px 5%; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .food-card img { height: 230px; }
+  .callout { margin: 0 5% 45px; padding: 28px 22px; }
+  .callout h2 { font-size: 27px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">🍕 أهلاً بيك في بونو — اختار أكلك المفضل واتواصل معانا!</div>
+
+<header>
+  <a class="logo" href="#home">BONO<span>.</span></a>
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#why">ليه بونو؟</a>
+    <a href="#menu">المنيو</a>
+    <a href="#contact">تواصل معانا</a>
+  </nav>
+  <a class="header-btn" href="#menu">اكتشف المنيو ↙</a>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="eyebrow">الطعم اللي يستاهل التجربة ✨</span>
+    <h1>مش مجرد أكلة...<br><span>دي حكاية طعم!</span></h1>
+    <p>من أول قضمة لآخر لقمة، اختار اللي بتحبه واستمتع بتجربة أكل تستاهلها. مستني إيه؟ اكتشف منيو بونو!</p>
+    <div class="actions">
+      <a class="btn btn-yellow" href="#menu">🍕 اكتشف المنيو</a>
+      <a class="btn btn-outline" href="#contact">اتواصل معانا</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="section-head">
+    <span class="kicker">WHY BONO?</span>
+    <h2>لما الجوع يقابل المزاج 😋</h2>
+    <p>اختيارات مختلفة عشان تلاقي أكلك المفضل في مكان واحد.</p>
+  </div>
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">🍕</div>
+      <h3>اختيارات على مزاجك</h3>
+      <p>بيتزا وكريب ومكرونات وسندوتشات، اختار اللي نفسك فيه.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🤤</div>
+      <h3>كل مرة ليها حكاية</h3>
+      <p>اكتشف الأصناف المختلفة وحدد طلبك قبل ما تتواصل معانا.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📱</div>
+      <h3>التواصل سهل</h3>
+      <p>اتصل بينا مباشرة للاستفسار عن الأصناف والأسعار والطلب.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section menu-section" id="menu">
+  <div class="section-head">
+    <span class="kicker">THE BONO MENU</span>
+    <h2>اختار اللي على مزاجك 🔥</h2>
+    <p>دي عينة من أصناف المطعم. اسألنا عن باقي المنيو والأسعار الحالية.</p>
+  </div>
+
+  <div class="filters">
+    <a class="filter" href="#pizza">🍕 البيتزا</a>
+    <a class="filter" href="#crepe">🌯 الكريب</a>
+    <a class="filter" href="#pasta">🍝 المكرونات</a>
+    <a class="filter" href="#contact">📞 اطلب واستفسر</a>
+  </div>
+
+  <h2 id="pizza" style="margin-bottom:20px">🍕 البيتزا</h2>
+  <div class="menu-grid">
+    <article class="food-card">
+      <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=700&q=85" alt="بيتزا شهية">
+      <div class="food-info">
+        <h3>بيتزا مارجريتا</h3>
+        <p>بيتزا بالجبنة وصلصة الطماطم.</p>
+        <div class="food-bottom"><span class="price">اسأل عن السعر</span><a class="small-btn" href="#contact">اطلبها</a></div>
+      </div>
+    </article>
+    <article class="food-card">
+      <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=85" alt="بيتزا بالجبنة">
+      <div class="food-info">
+        <h3>بيتزا سوسيس</h3>
+        <p>اختيار لمحبي البيتزا بإضافات شهية.</p>
+        <div class="food-bottom"><span class="price">اسأل عن السعر</span><a class="small-btn" href="#contact">اطلبها</a></div>
+      </div>
+    </article>
+    <article class="food-card">
+      <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=700&q=85" alt="بيتزا متنوعة">
+      <div class="food-info">
+        <h3>بيتزا ميكس</h3>
+        <p>اسألنا عن الإضافات والأحجام المتاحة.</p>
+        <div class="food-bottom"><span class="price">اسأل عن السعر</span><a class="small-btn" href="#contact">اطلبها</a></div>
+      </div>
+    </article>
+  </div>
+
+  <h2 id="crepe" style="margin:42px 0 20px">🌯 الكريب</h2>
+  <div class="menu-grid">
+    <article class="food-card">
+      <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=700&q=85" alt="ساندوتش ملفوف">
+      <div class="food-info">
+        <h3>كريب بانيه</h3>
+        <p>كريب بحشوة الدجاج، اسأل عن الاختيارات المتاحة.</p>
+        <div class="food-bottom"><span class="price">اسأل عن السعر</span><a class="small-btn" href="#contact">اطلبه</a></div>
+      </div>
+    </article>
+    <article class="food-card">
+      <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=700&q=85" alt="وجبة مقرمشة">
+      <div class="food-info">
+        <h3>كريب استربس</h3>
+        <p>اختيار لمحبي القرمشة والطعم الغني.</p>
+        <div class="food-bottom"><span class="price">اسأل عن السعر</span><a class="small-btn" href="#contact">اطلبه</a></div>
+      </div>
+    </article>
+    <article class="food-card">
+      <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=700&q=85" alt="ساندوتش">
+      <div class="food-info">
+        <h3>كريب ميكس جبن</h3>
+        <p>اسأل المطعم عن أنواع الجبن والإضافات.</p>
+        <div class="food-bottom"><span class="price">اسأل عن السعر</span><a class="small-btn" href="#contact">اطلبه</a></div>
+      </div>
+    </article>
+  </div>
+
+  <h2 id="pasta" style="margin:42px 0 20px">🍝 المكرونات</h2>
+  <div class="menu-grid">
+    <article class="food-card">
+      <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=85" alt="طبق مكرونة">
+      <div class="food-info">
+        <h3>مكرونة فريش</h3>
+        <p>اكتشف اختيارات المكرونات المتاحة في المطعم.</p>
+        <div class="food-bottom"><span class="price">اسأل عن السعر</span><a class="small-btn" href="#contact">اطلبها</a></div>
+      </div>
+    </article>
+    <article class="food-card">
+      <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=700&q=85" alt="مكرونة بالصوص">
+      <div class="food-info">
+        <h3>مكرونة بلحوم</h3> 
+        <p>تواصل مع المطعم لمعرفة الأنواع والإضافات.</p>
+        <div class="food-bottom"><span class="price">اسأل عن السعر</span><a class="small-btn" href="#contact">اطلبها</a></div>
+      </div>
+    </article>
+    <article class="food-card">
+      <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&w=700&q=85" alt="طبق مكرونة">
+      <div class="food-info">
+        <h3>مكرونة بلصوص</h3>
+        <p>اسألنا عن باقي الأصناف الموجودة في المنيو.</p>
+        <div class="food-bottom"><span class="price">اسأل عن السعر</span><a class="small-btn" href="#contact">اطلبها</a></div>
+      </div>
+    </article>
+  </div>
+  <p style="text-align:center;line-height:1.9;color:#746456;margin-top:28px">
+
+  </p>
+</section>
+
+<section class="callout">
+  <div>
+    <h2>جعان؟ متحتارش كتير! 😍</h2>
+    <p>شوف المنيو واتصل ببونو عشان تستفسر عن طلبك.</p>
+  </div>
+  <a class="btn btn-yellow" href="#contact">يلا نتواصل!</a>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="section-head">
+    <span class="kicker" style="color:#ffd34e">CONTACT BONO</span>
+    <h2>إحنا في انتظارك ❤️</h2>
+    <p>للطلبات والاستفسارات، تواصل مع المطعم مباشرة.</p>
+  </div>
+  <div class="contact-box">
+    <div class="contact-line">📞 <a href="tel:01008512476">01008512476</a></div>
+    <div class="contact-line">📞 <a href="tel:01109184644">01109184644</a></div>
+    <div class="contact-line">☎️ استفسارات وشكاوى: <a href="tel:01094011778">01094011778</a></div>
+    <div class="contact-line">العنوان/ أمام الجمعية الزراعية </div>
+    <div class="actions" style="justify-content:center">
+      <a class="btn btn-yellow" href="https://wa.me/201008512476">تواصل واتساب</a>
+      <a class="btn btn-outline" href="tel:01008512476">اتصل الآن</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  BONO —مطعم بونو 
+</footer>
+</body>
+</html>
